@@ -3,7 +3,7 @@
 WORLDOLD=/Users/zhafen/Downloads/world
 WORLDNEW=/Users/zhafen/Documents/curseforge/minecraft/Instances/MiZaTaCraft/saves/world
 DIRS_TO_OVERWRITE=( data poi region )
-FILES_TO_OVERWRITE=( level.dat level.dat_old )
+FILES_TO_OVERWRITE=( data/map* )
 
 WORLDMERGEDDIR=$(dirname $WORLDOLD)/merged_minecraft_world
 WORLDMERGED=$WORLDMERGEDDIR/world
@@ -31,7 +31,7 @@ for file in ${FILES_TO_OVERWRITE[@]}
 do
     echo "    " $WORLDMERGED/$file
     rm $WORLDMERGED/$file
-    cp $WORLDNEW/$file $WORLDMERGED/
+    cp $WORLDNEW/$file $WORLDMERGED/$( dirname $file)/
 done
 
 echo Compressing...
